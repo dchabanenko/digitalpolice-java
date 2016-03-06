@@ -28,6 +28,10 @@ public class RegionService {
         this.mapService= mapService;
     }
 
+    public List<Region> getRegions(RegionFilter filter){
+        return regionDAO.search(filter);
+    }
+
     public void importRegions() {
         BufferedReader regionsFileBuffer = null;
         String line;
@@ -114,10 +118,6 @@ public class RegionService {
         }
         coordinatesAsJson.append("]");
         return coordinatesAsJson.toString();
-    }
-
-    public List<Region> getRegions(RegionFilter filter){
-        return regionDAO.search(filter);
     }
 
     public void saveRegion(Region region) {

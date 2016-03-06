@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans>
+    <import resource="../config/context.xml"/>
+
+    <job id="importRegionsJob" xmlns="http://www.springframework.org/schema/batch">
+        <step id="step1">
+            <tasklet>
+                <chunk reader="regionsFileReader"
+                       writer="regionsDatabaseWriter" commit-interval="1" />
+            </tasklet>
+        </step>
+    </job>
+</beans>
